@@ -1,6 +1,8 @@
 import React from 'react';
 import { ApolloProvider } from '@apollo/react-hooks';
 import ApolloClient from 'apollo-boost';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import CPUInfo from './CPUInfo';
 
@@ -16,6 +18,7 @@ const App = () => {
           <h1>CPU Monitor</h1>
         </header>
         <CPUInfo />
+        <ToastContainer position={toast.POSITION.BOTTOM_LEFT} autoClose={false} />
       </div>
     </ApolloProvider>
   );

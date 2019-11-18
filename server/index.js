@@ -9,14 +9,12 @@ const os = require('os');
 // The GraphQL schema in string form
 const typeDefs = `
   type Query {
-    books: [Book]
     cpu: CPU
   }
-  type Book { title: String, author: String }
   type CPU {
     loadavg: LoadAvg,
     cores: Int,
-    percentLoad: Float
+    normalizedLoadAvg: Float
   }
   type LoadAvg {
     oneMinuteLoadAvg: Float
@@ -37,7 +35,7 @@ const resolvers = {
 
       const cores = os.cpus().length;
 
-      const percentLoad = oneMinuteLoadAvg / cores;
+      const normalizedLoadAvg = oneMinuteLoadAvg / cores;
 
       return {
         loadavg: {
@@ -46,7 +44,7 @@ const resolvers = {
           fifteenMinuteLoadAvg,
         },
         cores,
-        percentLoad,
+        normalizedLoadAvg,
       };
     },
   },
