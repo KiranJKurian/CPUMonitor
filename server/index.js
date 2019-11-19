@@ -3,13 +3,17 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const { graphqlExpress, graphiqlExpress } = require('apollo-server-express');
 const { makeExecutableSchema } = require('graphql-tools');
+const { GraphQLDateTime } = require('graphql-iso-date')
+
 require('loadavg-windows');
 const os = require('os');
 
 // The GraphQL schema in string form
 const typeDefs = `
+  scalar DateTime
   type Query {
     cpu: CPU
+    datetime: DateTime
   }
   type CPU {
     loadavg: LoadAvg,
@@ -25,6 +29,7 @@ const typeDefs = `
 
 // The resolvers
 const resolvers = {
+  DateTime: GraphQLDateTime,
   Query: {
     cpu: () => {
       const [
@@ -47,6 +52,7 @@ const resolvers = {
         normalizedLoadAvg,
       };
     },
+    datetime: () => new Date(Date.now()),
   },
 };
 
