@@ -4,10 +4,10 @@ import ApolloClient from 'apollo-boost';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
-import CPUInfo from './CPUInfo';
+import CPUInfo from './components/CPUInfo';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: 'http://localhost:4000/graphql'
 });
 
 const App = () => {
@@ -18,10 +18,13 @@ const App = () => {
           <h1>CPU Monitor</h1>
         </header>
         <CPUInfo />
-        <ToastContainer position={toast.POSITION.BOTTOM_LEFT} autoClose={false} />
+        <ToastContainer
+          position={toast.POSITION.BOTTOM_LEFT}
+          autoClose={false}
+        />
       </div>
     </ApolloProvider>
   );
-}
+};
 
 export default App;
