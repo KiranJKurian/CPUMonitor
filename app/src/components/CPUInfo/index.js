@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
 
-import { toast } from 'react-toastify';
 import Chart from '../Chart';
 import {
   REFRESH_RATE,
@@ -9,11 +8,9 @@ import {
   HIGH_THRESHOLD_AMOUNT,
   HIGH_THRESHOLD_DURATION,
   HIGH_LOAD_COOLDOWN_DURATION,
-  LOAD_STATUS_HIGH,
-  LOAD_STATUS_RECOVERING,
-  LOAD_STATUS_RECOVERED,
 } from '../../constants';
 import useChartDataAndLoadStatus from '../../hooks/useChartDataAndLoadStatus';
+import useLoadStatusToastEffect from '../../hooks/useLoadStatusToastEffect';
 
 const CPUInfo = ({
   refreshRate,
@@ -22,6 +19,7 @@ const CPUInfo = ({
   highThresholdDuration,
   highLoadCoolDownDuration,
 }) => {
+  // Queries CPU data and manages chartData and loadStatus state
   const { loading, error, chartData, loadStatus } = useChartDataAndLoadStatus({
     refreshRate,
     dataToShow,
@@ -30,21 +28,8 @@ const CPUInfo = ({
     highLoadCoolDownDuration,
   });
 
-  useEffect(() => {
-    switch (loadStatus) {
-      case LOAD_STATUS_HIGH:
-        toast.error('CPU Load High!');
-        break;
-      case LOAD_STATUS_RECOVERING:
-        toast.warn('CPU Load Recovering...');
-        break;
-      case LOAD_STATUS_RECOVERED:
-        toast.success('CPU Load Recovered');
-        break;
-      default:
-        break;
-    }
-  }, [loadStatus]);
+  // Handles toast alerts based on loadStatus
+  useLoadStatusToastEffect(loadStatus);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
