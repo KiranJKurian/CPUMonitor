@@ -20,4 +20,4 @@ npm i
 npm start
 ```
 
-Tada! Head over to [http://localhost:3000/graphql] and enjoy the CPU monitoring!
+Tada! Head over to your [localhost](http://localhost:3000/graphql) and enjoy the CPU monitoring!
