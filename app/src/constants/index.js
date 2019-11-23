@@ -1,3 +1,6 @@
+// GraphQL endpoint
+export const GRAPHQL_URI = 'http://localhost:4000/graphql';
+
 // Refresh Rate in seconds
 export const REFRESH_RATE = 10;
 // Amount of CPU Avg Load time to show in minutes

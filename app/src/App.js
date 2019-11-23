@@ -5,9 +5,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import './App.css';
 import CPUInfo from './components/CPUInfo';
+import { GRAPHQL_URI } from './constants';
 
 const client = new ApolloClient({
-  uri: 'http://localhost:4000/graphql',
+  uri: GRAPHQL_URI,
 });
 
 const App = () => {
