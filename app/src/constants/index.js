@@ -3,7 +3,9 @@ export const REFRESH_RATE = 10;
 // Amount of CPU Avg Load time to show in minutes
 export const CPU_TIME_TO_SHOW = 10;
 
-export const MAX_CPU_DATA_TO_SHOW = Math.floor(60 / REFRESH_RATE * CPU_TIME_TO_SHOW);
+export const MAX_CPU_DATA_TO_SHOW = Math.floor(
+  (60 / REFRESH_RATE) * CPU_TIME_TO_SHOW
+);
 
 // Amount which CPU Load is considered to be high
 export const HIGH_THRESHOLD_AMOUNT = 1;
