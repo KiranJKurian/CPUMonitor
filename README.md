@@ -31,3 +31,4 @@ Here are some possible improvements I would recommend implementing before this h
 4. Create a more holistic design
 5. Verify if app meets a11y standards and if not adhere to those standards
 6. Extract content to be provided by a CMS
+7. Add more tests for managing chartData and loadStatus state
